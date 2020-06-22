@@ -1,0 +1,125 @@
+html, body {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Fira Mono', monospace;
+    max-width: 920px;
+    height: 100%;
+}
+
+a {
+    color: black;
+}
+
+h1 {
+    text-transform: lowercase;
+}
+
+h1, h4 {
+    font-family: 'Major Mono Display', monospace;
+}
+
+code {
+    color: #BA2121;
+    background: #f8f8f8;
+    font-family: 'Fira Mono', monospace;
+}
+
+footer {
+    position: fixed;
+    height: 1.5em;
+    bottom: 0px;
+    max-width: inherit;
+    width: 100%;
+    background: white;
+    padding: 1em 0;
+    border-top: 1px solid;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    height: 100%;
+}
+
+.content {
+    margin-bottom: 3.5em;
+    padding-bottom: 1em;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+}
+
+.flex-spaced {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-fill {
+    flex-grow: 1;
+}
+
+.title-area {
+    height: calc(100% - 3.5em);
+}
+
+.down-arrow {
+    width: 1em;
+    height: 1em;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    margin-bottom: 1em
+}
+
+.description {
+    padding-left: 10px;
+}
+
+.outer-code {
+    border-style: solid;
+    border-color: black;
+    border-width: 0.1em;
+    padding-left: 0.8em;
+}
+
+.inner-code {
+    background: #fff;
+    overflow: auto;
+    width: auto;
+    border-left-style: solid;
+    border-left-color: #000;
+    border-left-width: 0.1em;
+    padding: .2em .6em;
+}
+
+img {
+    width: 10em;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+@media(max-width: 600px) {
+    img {
+        align-self: center;
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 940px) {
+    .container {
+        padding: 0 0.5em;
+    }
+}
