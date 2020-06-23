@@ -1,8 +1,11 @@
 # Announcing Bincode 1.3
 
+After a little over 6 months, bincode 1.3 is finally here! This version is a big milestone. It brings many new features and bugfixes, as well as introducing new maintainers
+and a roadmap.
+
 ## What is Bincode
 
-Bincode is a compact serialization library for Rust. It uses a zero-fluff encoding scheme where encoded object will be the same size or smaller than what they take up in memory.
+Bincode is a compact serialization library for Rust. It uses a zero-fluff encoding scheme where encoded objects will be the same size or smaller than what they take up in memory.
 
 ## Special Thanks
 
@@ -28,7 +31,7 @@ investigating how the features would fit into the overall design of bincode. The
 library overall.
 
 A few months ago I got in contact with Ty and Josh to ask them if they would be interested in tranferring maintainership. I was a previous contributor to the library, having helped migrate it
-through the massive breakage of serde 0.9. After a short discussion it was decided that I would take over the library.
+through the massive breakage of serde 0.9. After a short discussion it was decided that I would take over the maintinence of bincode.
 
 I don't take the role of bincode maintainer lightly. Bincode is a serialization library with millions of downloads and many high profile users. I am commited to keeping bincode stable, safe,
 and performant. There may be a 2.0 in the far future, but my primary concern is not breaking the ecosystem that bincode has today.
@@ -47,7 +50,7 @@ In the coming months I have a few overarching plans for what to do with bincode.
 
 ### What's New?
 
-1.3 adds three big features to bincode, constructable serializers/deserializers, a new config system that's even more performant than the last, and varint support
+1.3 adds three big features to bincode: constructable serializers/deserializers, a new config system that's even more performant than the last, and varint support.
 
 #### New config system
 
@@ -61,13 +64,24 @@ stored, which leads into the next big feature.
 
 Being able to create an instance of the Serializer/Deserializer types directly is an important feature for interoperability. Libraries like `erased-serde` need access to a `Serializer` in
 order to work correctly. Bincode didn't expose the Serializer/Deserializer structs before since it was thought that exposing them would lock us out of adding new configuration choices and options.
-With the addition of the new config system there is no longer that risk, so the Serializer and Deserializer can be exposed to users!
+With the addition of the new config system there is no longer that risk, so the Serializer/Deserializer can be exposed to users!
 
 #### Varint support
 
-Varint support has been a long requested feature of bincode. Previously, enum discriminants and slice lengths were stores as u32 and u64 respectively. This was wasteful for most objects since it is
+Varint support has been a long requested feature of bincode. Previously, enum discriminants and slice lengths were stored as u32 and u64 respectively. This was wasteful for most objects since it is
 very uncommon to have an enum with millions of discriminants or a slice with billions of entries. Varint is a new config option for bincode that will store all values under 250 in a single byte, saving
 a lot of space in the most common cases.
+
+### What's Fixed?
+
+#### UB while deserializing
+
+There was a well known UB bug in bincode that could be triggered by safe code. This is due to the fact that Rust doesn't have a good way to read into uninitialized buffers (see the linked bug for more info).
+The fix ended up impacting performance slightly, but since serialization libraries are often the source of security issues in other languages, the fix was judged to be worth the performance hit.
+
+#### Poor codegen when deserializing from slices
+
+The slice deserialization code was generating suboptimal assembly with a lot of unnecessary function calls. A small change was made to allow the optimizer to work more effectively.
 
 ## Closing
 
