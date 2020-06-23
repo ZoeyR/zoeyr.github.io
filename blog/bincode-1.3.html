@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zoey Riordan | Blog</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono|Major+Mono+Display" />
-  <link rel="stylesheet" href="../../hljs.css">
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../hljs.css">
+  <link rel="stylesheet" href="../style.css" />
 </head>
 
 <body>
@@ -70,7 +70,7 @@
           maintinence of bincode.</p>
       </section>
       <section>
-        <h2>Plans for the future</h2>
+        <h2>Plans for the Future</h2>
         <p>In the coming months I have a few overarching plans for what to do with bincode. </p>
         <ul>
           <li>Add `no-std` support <a href="https://github.com/servo/bincode/issues/265">#265</a></li>
@@ -108,7 +108,7 @@
           With the addition of the new config system there is no longer that risk, so the Serializer/Deserializer can be
           exposed to users!
         </p>
-        <h4>Varint support <a href="https://github.com/servo/bincode/pull/306">#306</a></h4>
+        <h4>Varint Support <a href="https://github.com/servo/bincode/pull/306">#306</a></h4>
         </h4>
         <p>Varint support has been a long requested feature of bincode. Previously, enum discriminants and slice lengths
           were stored as u32 and u64 respectively. This was wasteful for most objects since it is
@@ -122,7 +122,7 @@
           Rust doesn't have a good way to read into uninitialized buffers (see the linked bug for more info).
           The fix ended up impacting performance slightly, but since serialization libraries are often the source of
           security issues in other languages, the fix was judged to be worth the performance hit.</p>
-        <h4>Poor codegen when deserializing from slices <a href="https://github.com/servo/bincode/pull/308">#308</a>
+        <h4>Poor Codegen When Deserializing From Slices <a href="https://github.com/servo/bincode/pull/308">#308</a>
         </h4>
         </h4>
         <p>The slice deserialization code was generating suboptimal assembly with a lot of unnecessary function calls. A
