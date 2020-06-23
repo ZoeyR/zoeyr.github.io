@@ -14,7 +14,7 @@ h1 {
     text-transform: lowercase;
 }
 
-h1, h4 {
+header>h1, header>h4 {
     font-family: 'Major Mono Display', monospace;
 }
 
