@@ -33,16 +33,13 @@ library overall.
 A few months ago I got in contact with Ty and Josh to ask them if they would be interested in tranferring maintainership. I was a previous contributor to the library, having helped migrate it
 through the massive breakage of serde 0.9. After a short discussion it was decided that I would take over the maintinence of bincode.
 
-I don't take the role of bincode maintainer lightly. Bincode is a serialization library with millions of downloads and many high profile users. I am commited to keeping bincode stable, safe,
-and performant. There may be a 2.0 in the far future, but my primary concern is not breaking the ecosystem that bincode has today.
-
 ## Plans for the future
 
 In the coming months I have a few overarching plans for what to do with bincode. 
 
-* Resolve outstanding major feature requests
-* Write a specification for the format
-* Create implementations in other languages
+* Add `no-std` support [#265](https://github.com/servo/bincode/issues/265)
+* Write a specification for the format [#221](https://github.com/servo/bincode/issues/221)
+* Create implementations in other languages [#266](https://github.com/servo/bincode/issues/266)
 
 1.3 is the first step along that path. This release contains bugfixes and some of the most requested features.
 
@@ -52,7 +49,7 @@ In the coming months I have a few overarching plans for what to do with bincode.
 
 1.3 adds three big features to bincode: constructable serializers/deserializers, a new config system that's even more performant than the last, and varint support.
 
-#### New config system
+#### New config system [#310](https://github.com/servo/bincode/pull/310)
 
 This feature is a mostly technical one that won't affect most typical users of bincode. Bincode has a 0-cost configuration system. The config is expressed in the type system which removes any
 runtime branching needed. This makes configuration performant. Previously you couldn't access these config types directly. Instead configuration was constructed through an intermediate object that would
@@ -60,13 +57,13 @@ create the actual config through a massive match statement at runtime. This mean
 config types directly, removing the need for a large match statement and improving performance (if only slightly). The main advantage of exposing these types is that it allows the internal config to be
 stored, which leads into the next big feature.
 
-#### Constructable Serializers/Deserializers
+#### Constructable Serializers/Deserializers [#310](https://github.com/servo/bincode/pull/310)
 
 Being able to create an instance of the Serializer/Deserializer types directly is an important feature for interoperability. Libraries like `erased-serde` need access to a `Serializer` in
 order to work correctly. Bincode didn't expose the Serializer/Deserializer structs before since it was thought that exposing them would lock us out of adding new configuration choices and options.
 With the addition of the new config system there is no longer that risk, so the Serializer/Deserializer can be exposed to users!
 
-#### Varint support
+#### Varint support [#306](https://github.com/servo/bincode/pull/306)
 
 Varint support has been a long requested feature of bincode. Previously, enum discriminants and slice lengths were stored as u32 and u64 respectively. This was wasteful for most objects since it is
 very uncommon to have an enum with millions of discriminants or a slice with billions of entries. Varint is a new config option for bincode that will store all values under 250 in a single byte, saving
@@ -74,12 +71,12 @@ a lot of space in the most common cases.
 
 ### What's Fixed?
 
-#### UB while deserializing
+#### UB while deserializing [#309](https://github.com/servo/bincode/pull/309)
 
 There was a well known UB bug in bincode that could be triggered by safe code. This is due to the fact that Rust doesn't have a good way to read into uninitialized buffers (see the linked bug for more info).
 The fix ended up impacting performance slightly, but since serialization libraries are often the source of security issues in other languages, the fix was judged to be worth the performance hit.
 
-#### Poor codegen when deserializing from slices
+#### Poor codegen when deserializing from slices [#308](https://github.com/servo/bincode/pull/308)
 
 The slice deserialization code was generating suboptimal assembly with a lot of unnecessary function calls. A small change was made to allow the optimizer to work more effectively.
 
