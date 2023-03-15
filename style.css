@@ -4,10 +4,7 @@ body {
     padding: 0;
     font-family: 'Fira Mono', monospace;
     max-width: 920px;
-}
-
-body {
-    margin-bottom: 3.5em;
+    height: 100%
 }
 
 a {
@@ -42,7 +39,7 @@ header {
 }
 
 header.landing {
-    height: calc(100vh - 3.5em);
+    height: calc(100% - 3.5em);
     position: relative;
 }
 
@@ -58,6 +55,10 @@ header.landing::after {
     bottom: 1em;
     animation: fade-in 2s ease-in 1s;
     animation-fill-mode: backwards;
+}
+
+article:last-child {
+    margin-bottom: 3.5em;
 }
 
 article.project-blurb {
