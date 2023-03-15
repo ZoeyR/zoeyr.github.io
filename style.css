@@ -74,8 +74,12 @@ header.landing::after {
     animation-fill-mode: backwards;
 }
 
+article {
+    padding: 0 0.5em;
+}
+
 article:last-child {
-    margin-bottom: 3.5em;
+    padding-bottom: 3.5em;
 }
 
 article.project-blurb {
@@ -111,12 +115,6 @@ article.project-blurb>section {
 
     img {
         justify-self: center;
-    }
-}
-
-@media(max-width: 940px) {
-    article {
-        padding: 0 0.5em;
     }
 }
 
