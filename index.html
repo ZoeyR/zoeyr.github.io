@@ -14,75 +14,59 @@
         <a href="/blog">Blog</a>
         <a href="https://github.com/ZoeyR">GitHub</a>
         <a href="mailto:zoey@dos.cafe">Email</a>
-        <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/EF7B3E13C4C4B0ACD3C2543F5259409EBB31B565">PGP Key</a>
     </nav>
-    <div class="container">
-        <div class="flex flex-column flex-center title-area">
-            <div class="flex flex-center flex-column flex-fill">
-                <header>
-                    <h1>Zoey Riordan</h1>
-                    <h4>Software Developer</h4>
-                </header>
-            </div>
-            <div class="down-arrow">
-            </div>
-        </div>
-        <article>
-            <section class="flex flex-column">
-                <h2><a href="https://marketplace.visualstudio.com/items?itemName=dos-cafe.WhackWhackTerminal">Whack
-                        Whack Terminal</a></h2>
-                <div class="flex">
-                    <img src="WhackWhack.png" alt="Whack Whack Terminal logo">
-                    <div class="description">
-                        <p>
-                            Whack Whack Terminal is an extension for Visual Studio 2017 and 2019 that brings a full
-                            terminal experience into VS itself. This was a feature first made popular in VSCode and I
-                            wanted to bring the usefulness of that feature into mainline VS. Many software stacks these
-                            days require using the command line to perform part of the setup (npm, yeoman, gulp, go,
-                            etc.) By providing an integrated terminal extra features such as clickable build errors and
-                            automatic navigation to project folders can be added.
-                        </p>
-                        <p>
-                            Since creating this extension, I have worked to bring the roll this extension into VS
-                            officially. An integrated terminal is available as of Visual Studio 2019 16.6! This
-                            represents 3 years of work by myself and others to greatly improve the developer experience.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="flex flex-column">
-                <h2><a href="https://marketplace.visualstudio.com/items?itemName=dos-cafe.Rust">Rust for Visual
-                        Studio</a></h2>
-                <div class="flex">
-                    <img src="rust.png" alt="rust logo">
-                    <div class="description">
-                        <p>
-                            Rust for Visual Studio is an extension that brings Rust language support into VS. This
-                            extension leverages the language server protocol to provide features such as intellisense,
-                            quick info, and lightbulb fixes. Language server protocol support is a new features added to
-                            VS to make it easy to provide language support in many different editors at the same time.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section class="flex flex-column">
-                <h2><a href="https://github.com/ZoeyR/flif.rs">FLIF.rs</a></h2>
-                <div class="flex">
-                    <img src="flif.svg" alt="flif.rs logo">
-                    <div class="description">
-                        <p>
-                            FLIF.rs is a reimplementation of the <a href="http://flif.info">FLIF</a> image format in
-                            Rust. FLIF is a lossless image format that aims to produce much smaller images than other
-                            lossless formats such as PNG. I chose to reimplement this in Rust because Rust offers strong
-                            guarantees of memory safety, something that is quite important in an image library since
-                            there have been exploits in the past that take advantage of memory corruption bugs in image
-                            decoding libraries.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </article>
-    </div>
+
+    <header class="landing">
+        <h1>Zoey Riordan</h1>
+        <h4>Software Developer</h4>
+    </header>
+    <article class="project-blurb">
+        <h2><a href="https://marketplace.visualstudio.com/items?itemName=dos-cafe.WhackWhackTerminal">Whack
+                Whack Terminal</a></h2>
+        <img src="WhackWhack.png" alt="Whack Whack Terminal logo">
+        <section>
+            <p>
+                Whack Whack Terminal is an extension for Visual Studio 2017 and 2019 that brings a full
+                terminal experience into VS itself. This was a feature first made popular in VSCode and I
+                wanted to bring the usefulness of that feature into mainline VS. Many software stacks these
+                days require using the command line to perform part of the setup (npm, yeoman, gulp, go,
+                etc.) By providing an integrated terminal extra features such as clickable build errors and
+                automatic navigation to project folders can be added.
+            </p>
+            <p>
+                Since creating this extension, I have worked to bring the roll this extension into VS
+                officially. An integrated terminal is available as of Visual Studio 2019 16.6! This
+                represents 3 years of work by myself and others to greatly improve the developer experience.
+            </p>
+        </section>
+    </article>
+    <article class="project-blurb">
+        <h2><a href="https://marketplace.visualstudio.com/items?itemName=dos-cafe.Rust">Rust for Visual
+                Studio</a></h2>
+        <img src="rust.png" alt="rust logo">
+        <section>
+            <p>
+                Rust for Visual Studio is an extension that brings Rust language support into VS. This
+                extension leverages the language server protocol to provide features such as intellisense,
+                quick info, and lightbulb fixes. Language server protocol support is a new features added to
+                VS to make it easy to provide language support in many different editors at the same time.
+            </p>
+        </section>
+    </article>
+    <article class="project-blurb">
+        <h2><a href="https://github.com/ZoeyR/flif.rs">FLIF.rs</a></h2>
+        <img src="flif.svg" alt="flif.rs logo">
+        <section>
+            <p>
+                FLIF.rs is a reimplementation of the <a href="http://flif.info">FLIF</a> image format in
+                Rust. FLIF is a lossless image format that aims to produce much smaller images than other
+                lossless formats such as PNG. I chose to reimplement this in Rust because Rust offers strong
+                guarantees of memory safety, something that is quite important in an image library since
+                there have been exploits in the past that take advantage of memory corruption bugs in image
+                decoding libraries.
+            </p>
+        </section>
+    </article>
 </body>
 
 </html>

@@ -1,27 +1,25 @@
-html, body {
+html,
+body {
     margin: 0 auto;
     padding: 0;
     font-family: 'Fira Mono', monospace;
     max-width: 920px;
-    height: 100%;
+}
+
+body {
+    margin-bottom: 3.5em;
 }
 
 a {
     color: black;
 }
 
-header>h1 {
-    text-transform: lowercase;
-}
-
 header>h1, header>h4 {
     font-family: 'Major Mono Display', monospace;
 }
 
-code {
-    color: #BA2121;
-    background: #f8f8f8;
-    font-family: 'Fira Mono', monospace;
+header>h1 {
+    text-transform: lowercase;
 }
 
 nav {
@@ -37,85 +35,77 @@ nav {
     justify-content: space-around;
 }
 
-.flex {
-    display: flex;
+header {
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
-.container {
-    height: 100%;
+header.landing {
+    height: calc(100vh - 3.5em);
+    position: relative;
 }
 
-article {
-    margin-bottom: 3.5em;
-    padding-bottom: 1em;
-}
-
-.flex-column {
-    flex-direction: column;
-}
-
-.flex-center {
-    align-items: center;
-    justify-content:  center;
-}
-
-.flex-fill {
-    flex-grow: 1;
-}
-
-.title-area {
-    height: calc(100% - 3.5em);
-}
-
-.down-arrow {
+header.landing::after {
+    content: "";
     width: 1em;
     height: 1em;
     border: solid black;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-    margin-bottom: 1em
+    justify-self: center;
+    position: absolute;
+    bottom: 1em;
+    animation: fade-in 2s ease-in 1s;
+    animation-fill-mode: backwards;
 }
 
-.description {
-    padding-left: 10px;
+article.project-blurb {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "title title"
+        "img   content";
 }
 
-.outer-code {
-    border-style: solid;
-    border-color: black;
-    border-width: 0.1em;
-    padding-left: 0.8em;
+article.project-blurb>h2 {
+    grid-area: title;
 }
 
-.inner-code {
-    background: #fff;
-    overflow: auto;
-    width: auto;
-    border-left-style: solid;
-    border-left-color: #000;
-    border-left-width: 0.1em;
-    padding: .2em .6em;
-}
-
-img {
+article.project-blurb>img {
+    grid-area: img;
     width: 10em;
-    flex-shrink: 0;
-    align-self: flex-start;
+}
+
+article.project-blurb>section {
+    grid-area: content;
 }
 
 @media(max-width: 600px) {
-    img {
-        align-self: center;
+    article.project-blurb {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "img"   
+            "content";
+        grid-template-columns: 1fr;
     }
-
-    .flex {
-        display: flex;
-        flex-direction: column;
+    img {
+        justify-self: center;
     }
 }
 
 @media(max-width: 940px) {
-    .container {
+    article {
         padding: 0 0.5em;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
     }
 }
